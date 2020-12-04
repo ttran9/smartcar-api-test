@@ -27,4 +27,8 @@ Linux environment.
         - Some Notes below:
             - Due to the permissions that I am requiring for testing purposes a user would not be able to view
             all the relevant information for many of the test vehicles.
-                - Some working car brands are: Buick, Cadillac, Cheverolet, Dodge, and Ford.
+                - Some working car brands are: Buick, Cadillac, Chevrolet, Dodge, and Ford.
+                
+                
+# TODO:
+- Setup MySQL database to hold logged in users which will have an access token tied to their login.
