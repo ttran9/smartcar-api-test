@@ -32,11 +32,12 @@ public class InformationController {
 
     @GetMapping("/vehicle")
     public String vehicle(Model model) {
+        String viewName = "vehicle";
         access = exchangeService.getAccessToken();
         if(access.equals("") || access.length() < 1) {
             // this really means no access token was assigned (don't want to be too informative).
             model.addAttribute("error", "access server error");
-            return "error";
+            viewName = "error";
         } else {
             try {
                 SmartcarResponse<VehicleIds> vehicleIdResponse = AuthClient.getVehicleIds(access);
@@ -54,9 +55,11 @@ public class InformationController {
             } catch (SmartcarException exception) {
                 System.out.println("in information controller");
                 System.out.println(exception.getMessage());
+                viewName = "error";
+                model.addAttribute("error", "cannot get information for chosen vehicle please select another.");
             }
-            return "vehicle";
         }
+        return viewName;
     }
 
 }
