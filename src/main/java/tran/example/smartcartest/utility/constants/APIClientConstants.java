@@ -8,8 +8,11 @@ import com.smartcar.sdk.AuthClient;
 public class ClientConstants {
 
     private static final String CLIENT_ID = System.getenv("CLIENT_ID");
+//    private static final String CLIENT_ID = "48c0b800-bc06-4668-87ba-4e1a00ffe28f";
     private static final String CLIENT_SECRET = System.getenv("CLIENT_SECRET");
+//    private static final String CLIENT_SECRET = "c08a0168-f333-426b-9bb6-890180a53674";
     private static final String PORT = System.getenv("TEST_PORT");
+//    private static final String PORT = "8000";
     private static final String REDIRECT_URI = "http://localhost:" + PORT + "/exchange";
     private static final boolean TEST_MODE = true;
     private static final String[] SCOPE = {"required:read_vehicle_info", "read_odometer", "required:read_tires", "read_vin"};
