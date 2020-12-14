@@ -4,32 +4,53 @@ import com.smartcar.sdk.AuthClient;
 import com.smartcar.sdk.SmartcarException;
 import com.smartcar.sdk.data.Auth;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.view.RedirectView;
+import tran.example.smartcartest.configuration.smartcar.CustomAPIClient;
+import tran.example.smartcartest.model.domain.ApplicationUser;
+import tran.example.smartcartest.model.domain.CustomToken;
+import tran.example.smartcartest.repositories.ApplicationUserRepository;
+import tran.example.smartcartest.repositories.CustomTokenRepository;
+import tran.example.smartcartest.service.security.TokenValidationService;
+import tran.example.smartcartest.utility.api.SmartCarApiHelper;
 
 /*
- * A component/bean defining method(s) used to set the access token to enable future API calls to be made.
+ * Provides functionality to get the access token associated with the user unless it is expired.
  */
 @Service
 public class ExchangeServiceImpl implements ExchangeService {
 
-    private String accessToken;
+    private CustomTokenRepository customTokenRepository;
+    private ApplicationUserRepository applicationUserRepository;
+    private TokenValidationService tokenValidationService;
 
-    /*
-     * Sets the access token required to make HTTP requests to the Smartcar API.
+    public ExchangeServiceImpl(CustomTokenRepository customTokenRepository, ApplicationUserRepository applicationUserRepository,
+                               TokenValidationService tokenValidationService) {
+        this.customTokenRepository = customTokenRepository;
+        this.applicationUserRepository = applicationUserRepository;
+        this.tokenValidationService = tokenValidationService;
+    }
+
+    /**
+     * Updates the logged in user's access and refresh token with the specified code.
+     * @param code The code used to get the access token from the Smartcar API.
+     * @param applicationUser The user whose access and refresh token will be updated.
+     * @throws SmartcarException Throws an exception if there is an issue with obtaining an access and refresh token.
      */
     @Override
-    public RedirectView setAccessToken(String code, AuthClient client) throws SmartcarException {
-        Auth auth = client.exchangeCode(code);
-        // in a production app you'll want to store this in some kind of persistent storage
-        this.setAccessToken(auth.getAccessToken());
-        return new RedirectView("vehicle"); // go to vehicle page to see information.
-    }
+    public void generateAccessToken(String code, ApplicationUser applicationUser) throws SmartcarException {
+        if(!tokenValidationService.checkToken(applicationUser.getUsername())) {
+            AuthClient authClient = CustomAPIClient.getClient();
+            // check for token and only need to generate a new one. if there is no valid token to be used.
+            Auth auth = authClient.exchangeCode(code);
 
-    public String getAccessToken() {
-        return this.accessToken;
-    }
+            CustomToken customToken = applicationUser.getCustomToken();
+            if(customToken == null) {
+                customToken = new CustomToken();
+            }
+            SmartCarApiHelper.setCustomTokenHelper(customToken, auth.getAccessToken(), auth.getExpiration(),
+                    auth.getRefreshToken(), auth.getRefreshExpiration());
 
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
+            applicationUser.setCustomToken(customToken);
+            applicationUserRepository.save(applicationUser);
+        }
     }
 }

@@ -1,14 +1,22 @@
-package tran.example.smartcartest.configuration;
+package tran.example.smartcartest.configuration.fileReader;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 
-public class MyFileReader {
+/**
+ * Provides functionality to read from a file for configurations.
+ */
+public class CustomFileReader {
 
-    public MyFileReader() { }
+    public CustomFileReader() { }
 
+    /**
+     * Reads a file and returns a JSONObject with key value pairs holding configuration information.
+     * @param fileName The name of the file containing key and value pairs.
+     * @return A JSONObject with configuration information.
+     */
     public JSONObject getObjects(String fileName) {
         JSONParser parser = new JSONParser();
         JSONObject jsonObject = null;
@@ -22,6 +30,12 @@ public class MyFileReader {
         return jsonObject;
     }
 
+    /**
+     * Grabs the value from a corresponding key in a JSONObject.
+     * @param jsonObject The JSONObject holding key/value pairs.
+     * @param key The name of the key to obtain the value for.
+     * @return Returns a value given a specific key.
+     */
     public String getContentFromKey(JSONObject jsonObject, String key) {
         String value = null;
         try {

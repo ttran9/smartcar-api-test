@@ -5,25 +5,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import tran.example.smartcartest.model.form.ApplicationUserForm;
-
 import tran.example.smartcartest.utility.controller.ControllerHelper;
 
 import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
 import static tran.example.smartcartest.utility.constants.PathConstants.LOGIN_PATH;
+import static tran.example.smartcartest.utility.constants.PathConstants.REGISTRATION_PATH;
 import static tran.example.smartcartest.utility.constants.ValueConstants.LOGIN_TITLE;
-import static tran.example.smartcartest.utility.constants.ViewConstants.LOGIN_PAGE;
+import static tran.example.smartcartest.utility.constants.ValueConstants.REGISTRATION_TITLE;
+import static tran.example.smartcartest.utility.constants.ViewConstants.REGISTRATION_PAGE;
+
 
 /**
- * Defines routes to redirect the user to the page to go to the Smartcar connect under test mode.
+ * Endpoint(s) to handle registration requests.
  */
 @Controller
-public class LoginController {
+public class RegistrationController {
 
-    @GetMapping(LOGIN_PATH)
+    @GetMapping(REGISTRATION_PATH)
     public String login(@ModelAttribute ApplicationUserForm applicationUserForm, Model model) {
-        ControllerHelper.addAttribute(model, TITLE_KEY, LOGIN_TITLE);
-        return LOGIN_PAGE;
+        // TODO: provide login.html
+        ControllerHelper.addAttribute(model, TITLE_KEY, REGISTRATION_TITLE);
+        return REGISTRATION_PAGE;
     }
-
-
 }

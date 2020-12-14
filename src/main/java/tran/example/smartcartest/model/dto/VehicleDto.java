@@ -1,4 +1,4 @@
-package tran.example.smartcartest.model;
+package tran.example.smartcartest.model.dto;
 
 import java.text.DecimalFormat;
 

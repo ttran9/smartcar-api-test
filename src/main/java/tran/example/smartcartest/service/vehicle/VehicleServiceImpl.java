@@ -5,7 +5,7 @@ import com.smartcar.sdk.Vehicle;
 import com.smartcar.sdk.data.VehicleInfo;
 import com.smartcar.sdk.data.VehicleTirePressure;
 import org.springframework.stereotype.Service;
-import tran.example.smartcartest.model.VehicleDto;
+import tran.example.smartcartest.model.dto.VehicleDto;
 
 import java.util.List;
 
