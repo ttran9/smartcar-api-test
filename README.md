@@ -31,6 +31,6 @@ Linux environment.
                 
                 
 # TODO:
-- Fix issue where logged in user can only pick the vehicle upon logging in the first time.
+- Fix issue where logged in user can only pick the vehicle brand upon logging in the first time.
 - I will create another branch and make it so the user can have the option of going through the oauth flow process and choose
 another brand.
