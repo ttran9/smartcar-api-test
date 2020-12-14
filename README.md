@@ -18,7 +18,7 @@ Linux environment.
         b) [This is another guide](https://www.baeldung.com/tomcat-root-application) I followed to deploy it to a local 
         Tomcat 9 server instead of just using an embedded tomcat server that one can run through some IDE (IntelliJ) 
         for example.
-    3) make sure to create a configuration file, inside of the /etc directory. In my case I used "/etc/test_config.json".
+    3) make sure to create a configuration file, inside of the /etc directory. In my case I used "/etc/sc_api_config.json".
         a) The file is simply just a JSONObject with three keys ("CLIENT_ID", "CLIENT_SECRET", and "PORT") and their values.
             - Make sure to fill out the CLIENT_ID and CLIENT_SECRET from your Smartcar credentials from the dashboard.
     4) run the builder_helper.sh script by using the below command.
@@ -31,4 +31,6 @@ Linux environment.
                 
                 
 # TODO:
-- Setup MySQL database to hold logged in users which will have an access token tied to their login.
+- Fix issue where logged in user can only pick the vehicle upon logging in the first time.
+- I will create another branch and make it so the user can have the option of going through the oauth flow process and choose
+another brand.
