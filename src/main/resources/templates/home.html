@@ -9,7 +9,10 @@
     <th:block th:include="navigationcontent :: navigationContent"></th:block>
     <div class="container">
         <p>This is the home page</p>
-        <p>Will add ways to login and view vehicle information a bit later!</p>
+        <span th:if="${vehiclePathKey != null && vehicleTextKey != null}">
+            <a class="btn btn-primary" th:href="${vehiclePathKey}" th:text="${vehicleTextKey}">Vehicle Information</a>
+        </span>
     </div>
+
 </body>
 </html>
