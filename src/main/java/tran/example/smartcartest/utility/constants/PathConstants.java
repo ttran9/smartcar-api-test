@@ -8,7 +8,6 @@ public class PathConstants {
     public static final String VEHICLE_PATH = "/vehicle";
     public static final String LOGIN_PATH = "/login";
     public static final String REGISTRATION_PATH = "/register";
-    public static final String LOGOUT_PATH = "/logout";
     public static final String[] RESOURCE_PATHS = {"/favicon.ico",  "/**/*.png",  "/**/*.gif", "/**/*.svg",  "/**/*.jpg",
                                                     "/**/*.html", "/**/*.css", "/**/*.js"};
 }
