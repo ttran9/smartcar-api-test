@@ -3,7 +3,7 @@ package tran.example.smartcartest.model.form;
 /**
  * Object to hold data from the login form.
  */
-public class ApplicationUserForm {
+public class LoginForm {
 
     private String username;
 
