@@ -32,4 +32,3 @@ Linux environment.
                 
 # TODO:
 - Comment code as necessary.
-- Create basic registration functionality.
