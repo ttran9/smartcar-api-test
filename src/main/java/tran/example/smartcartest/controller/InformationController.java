@@ -17,9 +17,13 @@ import tran.example.smartcartest.utility.controller.ControllerHelper;
 import java.util.LinkedList;
 import java.util.List;
 
+import static tran.example.smartcartest.configuration.smartcar.constants.SmartCarApiConstants.CHANGE_VEHICLE_BRAND_KEY;
+import static tran.example.smartcartest.configuration.smartcar.constants.SmartCarApiConstants.SMARTCAR_CONNECT_LINK;
+import static tran.example.smartcartest.utility.constants.KeyConstants.SMARTCAR_CONNECT_LINK_KEY;
 import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
 import static tran.example.smartcartest.utility.constants.PathConstants.VEHICLE_PATH;
 import static tran.example.smartcartest.utility.constants.ValueConstants.VEHICLE_TITLE;
+import static tran.example.smartcartest.utility.constants.view.ViewConstants.CHANGE_VEHICLE_BRAND_MESSAGE;
 
 /**
  * Defines a route to display information about vehicles from a specific car brand (such as a Jaguar).
@@ -55,6 +59,9 @@ public class InformationController {
                 String[] vehicleIds = vehicleIdResponse.getData().getVehicleIds();
 
                 vehicleService.fillVehicleList(vehicleList, vehicleIds, access);
+                ControllerHelper.addAttribute(model, SMARTCAR_CONNECT_LINK_KEY, SMARTCAR_CONNECT_LINK);
+                ControllerHelper.addAttribute(model, CHANGE_VEHICLE_BRAND_KEY, CHANGE_VEHICLE_BRAND_MESSAGE);
+
                 model.addAttribute("list", vehicleList);
             }
             else {
