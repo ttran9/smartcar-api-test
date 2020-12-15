@@ -13,6 +13,9 @@ import java.util.stream.StreamSupport;
 import static tran.example.smartcartest.utility.constants.data.TestDataConstants.*;
 import static tran.example.smartcartest.utility.constants.security.SecurityConstants.USER_AUTHORITY;
 
+/**
+ * Class to provide basic functionality to create two users to prevent the need for going through the registration form.
+ */
 public class AbstractBootstrapData implements ApplicationListener<ContextRefreshedEvent> {
 
     private ApplicationUserService applicationUserService;
