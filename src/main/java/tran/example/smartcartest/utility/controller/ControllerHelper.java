@@ -1,7 +1,10 @@
 package tran.example.smartcartest.utility.controller;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
+
+import static tran.example.smartcartest.utility.constants.security.SecurityConstants.ANONYMOUS_USER;
 
 /**
  * Defines methods used across multiple controllers
@@ -19,6 +22,13 @@ public class ControllerHelper {
     }
 
     public static String getLoggedInUserName() {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+        String name = ANONYMOUS_USER;
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if(auth != null) {
+            if(auth.getName() != null) {
+                name = auth.getName();
+            }
+        }
+        return name;
     }
 }
