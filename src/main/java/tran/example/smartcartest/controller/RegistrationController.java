@@ -8,11 +8,9 @@ import tran.example.smartcartest.model.form.ApplicationUserForm;
 import tran.example.smartcartest.utility.controller.ControllerHelper;
 
 import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
-import static tran.example.smartcartest.utility.constants.PathConstants.LOGIN_PATH;
 import static tran.example.smartcartest.utility.constants.PathConstants.REGISTRATION_PATH;
-import static tran.example.smartcartest.utility.constants.ValueConstants.LOGIN_TITLE;
 import static tran.example.smartcartest.utility.constants.ValueConstants.REGISTRATION_TITLE;
-import static tran.example.smartcartest.utility.constants.ViewConstants.REGISTRATION_PAGE;
+import static tran.example.smartcartest.utility.constants.view.ViewConstants.REGISTRATION_VIEW_NAME;
 
 
 /**
@@ -25,6 +23,6 @@ public class RegistrationController {
     public String login(@ModelAttribute ApplicationUserForm applicationUserForm, Model model) {
         // TODO: provide login.html
         ControllerHelper.addAttribute(model, TITLE_KEY, REGISTRATION_TITLE);
-        return REGISTRATION_PAGE;
+        return REGISTRATION_VIEW_NAME;
     }
 }

@@ -10,15 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import tran.example.smartcartest.utility.controller.ControllerHelper;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.net.http.HttpRequest;
-
-import static org.springframework.security.web.context.HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY;
 import static tran.example.smartcartest.utility.constants.KeyConstants.ERROR_KEY;
 import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
 import static tran.example.smartcartest.utility.constants.PathConstants.ERROR_PATH;
 import static tran.example.smartcartest.utility.constants.ValueConstants.ERROR_TITLE;
-import static tran.example.smartcartest.utility.constants.ViewConstants.ERROR_PAGE;
+import static tran.example.smartcartest.utility.constants.view.ViewConstants.ERROR_VIEW_NAME;
+
 
 /*
  * A controller to display an error page/template with an error message.
@@ -37,7 +34,7 @@ public class CustomErrorController implements ErrorController {
         String errorMessage = request.getAttribute("javax.servlet.error.status_code") + " (" +
                 request.getAttribute("javax.servlet.error.message") + ")";
         ControllerHelper.addAttribute(model, ERROR_KEY, errorMessage);
-        return ERROR_PAGE;
+        return ERROR_VIEW_NAME;
     }
 }
 
