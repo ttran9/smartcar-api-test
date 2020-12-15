@@ -23,7 +23,7 @@ import static tran.example.smartcartest.utility.constants.KeyConstants.SMARTCAR_
 import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
 import static tran.example.smartcartest.utility.constants.PathConstants.VEHICLE_PATH;
 import static tran.example.smartcartest.utility.constants.ValueConstants.VEHICLE_TITLE;
-import static tran.example.smartcartest.utility.constants.view.ViewConstants.CHANGE_VEHICLE_BRAND_MESSAGE;
+import static tran.example.smartcartest.utility.constants.view.TextConstants.CHANGE_VEHICLE_BRAND_MESSAGE;
 
 /**
  * Defines a route to display information about vehicles from a specific car brand (such as a Jaguar).
