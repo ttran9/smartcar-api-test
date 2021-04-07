@@ -9,14 +9,13 @@ import static tran.example.smartcartest.configuration.smartcar.constants.SmartCa
 import static tran.example.smartcartest.utility.constants.ConfigurationConstants.SC_CREDENTIALS;
 import static tran.example.smartcartest.utility.constants.PathConstants.EXCHANGE_PATH;
 
+/**
+ * A bean used to assist with the OAuth2 flow used by Smartcar in order to grab relevant data from the Smartcar API.
+ */
 @Component
 public class CustomAPIClient {
     private static final boolean TEST_MODE = true;
     private static final String[] SCOPE = {"required:read_vehicle_info", "read_odometer", "required:read_tires", "read_vin"};
-//    private static final String[] SCOPE = {"required:read_vehicle_info", "required:read_tires", "read_vin"};
-//    private static final String[] SCOPE = {"required:read_vehicle_info", "required:read_tires", "read_vin"};
-//    private static final String[] SCOPE = {"required:read_vehicle_info", "required:read_tires", "read_odometer"};
-//    private static final String[] SCOPE = {"required:read_vehicle_info", "required:read_tires", "read_odometer"};
 
     /*
      * An instance of a custom client required to make HTTP requests to the Smartcar API.
