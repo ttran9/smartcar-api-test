@@ -33,8 +33,7 @@ public class HomeController {
     }
 
     @GetMapping(HOME_PATH)
-    public String displayHomePage(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(true);
+    public String displayHomePage(Model model) {
 
         String userName = ControllerHelper.getLoggedInUserName();
         try {
@@ -47,9 +46,6 @@ public class HomeController {
         } catch (SmartcarException exception) {
             System.out.println(exception.getMessage());
         }
-        System.out.println("authentication object below!");
-        System.out.println(session.getAttribute(SPRING_SECURITY_CONTEXT_KEY));
-        System.out.println("authentication object above");
 
         ControllerHelper.addAttribute(model, TITLE_KEY, HOME_TITLE);
         return HOME_VIEW_NAME;
