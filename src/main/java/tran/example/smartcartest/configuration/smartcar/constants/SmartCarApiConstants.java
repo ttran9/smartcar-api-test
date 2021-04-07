@@ -1,5 +1,8 @@
 package tran.example.smartcartest.configuration.smartcar.constants;
 
+/**
+ * Declaration of constants for interacting with the Smartcar API.
+ */
 public class SmartCarApiConstants {
 
     public static final String CLIENT_ID_KEY = "CLIENT_ID";
