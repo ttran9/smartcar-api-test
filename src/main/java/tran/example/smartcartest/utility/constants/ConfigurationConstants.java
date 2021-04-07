@@ -11,8 +11,8 @@ public class ConfigurationConstants {
     // database constants.
     public static final String CONFIGURATION_FILE_LOCATION = "/etc/sc_db_credentials.json";
 
-    public static final String MYSQL_DRIVER_CLASS_NAME = "CB_MYSQL_DB_DRIVER_CLASS_NAME";
-    public static final String MYSQL_DB_URL = "CB_MYSQL_DB_URL";
-    public static final String MYSQL_DB_USER_NAME = "CB_MYSQL_DB_USER_NAME";
-    public static final String MYSQL_DB_PASSWORD = "CB_MYSQL_DB_PASSWORD";
+    public static final String MYSQL_DRIVER_CLASS_NAME = "SC_MYSQL_DB_DRIVER_CLASS_NAME";
+    public static final String MYSQL_DB_URL = "SC_MYSQL_DB_URL";
+    public static final String MYSQL_DB_USER_NAME = "SC_MYSQL_DB_USER_NAME";
+    public static final String MYSQL_DB_PASSWORD = "SC_MYSQL_DB_PASSWORD";
 }
