@@ -2,7 +2,8 @@ package tran.example.smartcartest.controller;
 
 import com.smartcar.sdk.AuthClient;
 import com.smartcar.sdk.SmartcarException;
-import com.smartcar.sdk.data.*;
+import com.smartcar.sdk.data.SmartcarResponse;
+import com.smartcar.sdk.data.VehicleIds;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,12 @@ import java.util.List;
 
 import static tran.example.smartcartest.configuration.smartcar.constants.SmartCarApiConstants.CHANGE_VEHICLE_BRAND_KEY;
 import static tran.example.smartcartest.configuration.smartcar.constants.SmartCarApiConstants.SMARTCAR_CONNECT_LINK;
-import static tran.example.smartcartest.utility.constants.KeyConstants.SMARTCAR_CONNECT_LINK_KEY;
-import static tran.example.smartcartest.utility.constants.KeyConstants.TITLE_KEY;
+import static tran.example.smartcartest.utility.constants.KeyConstants.*;
+import static tran.example.smartcartest.utility.constants.PathConstants.REMOVE_TOKEN_PATH;
 import static tran.example.smartcartest.utility.constants.PathConstants.VEHICLE_PATH;
 import static tran.example.smartcartest.utility.constants.ValueConstants.VEHICLE_TITLE;
 import static tran.example.smartcartest.utility.constants.view.TextConstants.CHANGE_VEHICLE_BRAND_MESSAGE;
+import static tran.example.smartcartest.utility.constants.view.TextConstants.REMOVE_TOKEN_TEXT;
 
 /**
  * Defines a route to display information about vehicles from a specific car brand (such as a Jaguar).
@@ -60,6 +62,9 @@ public class InformationController {
                 vehicleService.fillVehicleList(vehicleList, vehicleIds, access);
                 ControllerHelper.addAttribute(model, SMARTCAR_CONNECT_LINK_KEY, SMARTCAR_CONNECT_LINK);
                 ControllerHelper.addAttribute(model, CHANGE_VEHICLE_BRAND_KEY, CHANGE_VEHICLE_BRAND_MESSAGE);
+
+                ControllerHelper.addAttribute(model, REMOVE_TOKEN_PATH_KEY, REMOVE_TOKEN_PATH);
+                ControllerHelper.addAttribute(model, REMOVE_TOKEN_TEXT_KEY, REMOVE_TOKEN_TEXT);
 
                 model.addAttribute("list", vehicleList);
             }
