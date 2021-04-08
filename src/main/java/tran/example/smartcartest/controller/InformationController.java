@@ -3,7 +3,6 @@ package tran.example.smartcartest.controller;
 import com.smartcar.sdk.AuthClient;
 import com.smartcar.sdk.SmartcarException;
 import com.smartcar.sdk.data.*;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,8 +51,8 @@ public class InformationController {
 
         try {
             if(tokenValidationService.checkToken(userName)) {
-            ApplicationUser user = (ApplicationUser) customUserDetailsService.loadUserByUsername(userName);
-            access = user.getCustomToken().getAccessToken();
+                ApplicationUser user = (ApplicationUser) customUserDetailsService.loadUserByUsername(userName);
+                access = user.getCustomToken().getAccessToken();
                 SmartcarResponse<VehicleIds> vehicleIdResponse = AuthClient.getVehicleIds(access);
                 List<VehicleDto> vehicleList = new LinkedList<>();
                 String[] vehicleIds = vehicleIdResponse.getData().getVehicleIds();
