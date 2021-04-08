@@ -53,4 +53,7 @@ Linux environment.
                 
                 
 # TODO:
-- Comment code as necessary (in progress).
+- When the access token has been generated and another vehicle brand is selected it will still display the first selected brand.
+    - Though this isn't a fix I have removed logic where an existing access token is used and instead a new access token
+    is assigned which is inefficient. I will have to further debug this issue to figure out why an existing access token
+    would cause for the same brand of vehicles to be displayed.
