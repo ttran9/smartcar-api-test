@@ -15,6 +15,9 @@
                     <li class="nav-item" th:if="${connectKey != null && brandKey != null}" sec:authorize="isAuthenticated()">
                         <a class="nav-link" th:href="${connectKey}" th:text="${brandKey}">Select New Vehicle</a>
                     </li>
+                    <li class="nav-item" th:if="${removeTokenPathKey != null && removeTokenTextKey != null}" sec:authorize="isAuthenticated()">
+                        <a class="nav-link" th:href="${removeTokenPathKey}" th:text="${removeTokenTextKey}">Delete Access Token</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" sec:authorize="isAnonymous()">

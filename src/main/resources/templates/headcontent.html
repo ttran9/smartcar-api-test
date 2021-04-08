@@ -16,3 +16,10 @@
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
             src="webjars/jquery/3.5.1/jquery.min.js"> </script>
 </th:block>
+
+<th:block th:fragment="headerContent">
+    <th:block th:include="/headcontent :: titleContent"></th:block>
+    <th:block th:include="/headcontent :: bootstrapCss"></th:block>
+    <th:block th:include="/headcontent :: jQuery"></th:block>
+    <th:block th:include="/headcontent :: bootstrapJS"></th:block>
+</th:block>
