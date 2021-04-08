@@ -10,4 +10,5 @@ public class PathConstants {
     public static final String REGISTRATION_PATH = "/register";
     public static final String[] RESOURCE_PATHS = {"/favicon.ico",  "/**/*.png",  "/**/*.gif", "/**/*.svg",  "/**/*.jpg",
                                                     "/**/*.html", "/**/*.css", "/**/*.js"};
+    public static final String REMOVE_TOKEN_PATH = "/removeToken";
 }
