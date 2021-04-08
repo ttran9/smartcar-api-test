@@ -37,7 +37,8 @@ public class ExchangeServiceImpl implements ExchangeService {
      */
     @Override
     public void generateAccessToken(String code, ApplicationUser applicationUser) throws SmartcarException {
-        if(!tokenValidationService.checkToken(applicationUser.getUsername())) {
+        // TODO: figure out how to leave in this valid token check.
+//        if(!tokenValidationService.checkToken(applicationUser.getUsername())) {
             AuthClient authClient = CustomAPIClient.getClient();
             // check for token and only need to generate a new one. if there is no valid token to be used.
             Auth auth = authClient.exchangeCode(code);
@@ -51,6 +52,6 @@ public class ExchangeServiceImpl implements ExchangeService {
 
             applicationUser.setCustomToken(customToken);
             applicationUserRepository.save(applicationUser);
-        }
+//        }
     }
 }
