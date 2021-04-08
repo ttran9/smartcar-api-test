@@ -57,3 +57,5 @@ Linux environment.
     - Though this isn't a fix I have removed logic where an existing access token is used and instead a new access token
     is assigned which is inefficient. I will have to further debug this issue to figure out why an existing access token
     would cause for the same brand of vehicles to be displayed.
+        - I have also added in a feature where a user can remove their access token and grab a new one to bypass this issue
+        although this shouldn't be needed this is a quick fix/hack acting as a temporary solution.
