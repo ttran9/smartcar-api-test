@@ -15,7 +15,7 @@ public class ApplicationUser extends DomainObject implements UserDetails {
 
     private String username;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "custom_token_id", referencedColumnName = "id")
     private CustomToken customToken;
 

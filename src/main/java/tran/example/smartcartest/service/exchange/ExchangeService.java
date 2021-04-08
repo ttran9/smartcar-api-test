@@ -10,4 +10,5 @@ public interface ExchangeService {
 
     void generateAccessToken(String code, ApplicationUser applicationUser) throws SmartcarException;
 
+    void deleteAccessToken(String userName);
 }

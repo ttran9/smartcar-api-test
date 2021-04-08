@@ -4,6 +4,7 @@ import com.smartcar.sdk.AuthClient;
 import com.smartcar.sdk.SmartcarException;
 import com.smartcar.sdk.data.Auth;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tran.example.smartcartest.configuration.smartcar.CustomAPIClient;
 import tran.example.smartcartest.model.domain.ApplicationUser;
 import tran.example.smartcartest.model.domain.CustomToken;
@@ -13,7 +14,7 @@ import tran.example.smartcartest.service.security.TokenValidationService;
 import tran.example.smartcartest.utility.api.SmartCarApiHelper;
 
 /*
- * Provides functionality to get the access token associated with the user unless it is expired.
+ * Provides functionality to interact with a user's access token.
  */
 @Service
 public class ExchangeServiceImpl implements ExchangeService {
@@ -53,5 +54,16 @@ public class ExchangeServiceImpl implements ExchangeService {
             applicationUser.setCustomToken(customToken);
             applicationUserRepository.save(applicationUser);
 //        }
+    }
+
+    @Transactional
+    @Override
+    public void deleteAccessToken(String userName) {
+        ApplicationUser applicationUser = applicationUserRepository.findByUsername(userName);
+        CustomToken token = applicationUser.getCustomToken();
+        if(token != null) {
+            applicationUser.setCustomToken(null);
+            applicationUserRepository.save(applicationUser);
+        }
     }
 }
