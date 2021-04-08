@@ -16,8 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static tran.example.smartcartest.utility.constants.PathConstants.HOME_PATH;
 import static tran.example.smartcartest.utility.constants.PathConstants.VEHICLE_PATH;
 import static tran.example.smartcartest.utility.constants.error.MessageConstants.AUTHENTICATION_WITH_SMARTCAR_API_ERROR;
+import static tran.example.smartcartest.utility.constants.security.SecurityConstants.ANONYMOUS_USER;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -41,7 +43,16 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
             Authentication authentication
     ) throws IOException {
         try {
-            String targetUrl = getTargetUrl(authentication);
+            String targetUrl = "";
+            if(authentication.getName() != null && !authentication.getName().equals(ANONYMOUS_USER)) {
+                if(tokenValidationService.checkToken(authentication.getName())) {
+                    targetUrl = HOME_PATH;
+                } else {
+                    targetUrl = getTargetUrl(authentication);
+                }
+            } else {
+                targetUrl = getTargetUrl(authentication);
+            }
             redirectStrategy.sendRedirect(request, response, targetUrl);
         } catch(SmartcarException exception) {
             throw new CustomAuthenticationException(AUTHENTICATION_WITH_SMARTCAR_API_ERROR);
